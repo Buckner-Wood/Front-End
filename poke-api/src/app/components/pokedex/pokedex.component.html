@@ -24,4 +24,25 @@
       </tr>
     </tbody>
   </table>
+  <div class="row">
+    <label class="col-sm-4" for="employeeInput">Employee ID #</label>
+    <input class="col-sm-4" id="employeeInput" name="employeeInput" type="number" [(ngModel)]="input">
+    <button class="btn btn-primary col-sm-4" (click)="showEmployee()">Here's an Employee!</button>
+  </div>
+  <table class="table" *ngIf="employee">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Salary</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{employee?.id}}</td>
+        <td>{{employee?.name}}</td>
+        <td>{{employee?.salary}}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

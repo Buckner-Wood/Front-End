@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Employee } from 'src/app/models/employee.model';
 import { Pokemon } from 'src/app/models/pokemon.model';
 import { PokeService } from 'src/app/services/poke.service';
 
@@ -11,6 +12,8 @@ export class PokedexComponent implements OnInit {
     
     public pokemon:Pokemon|null = null;
     public input:number = 0;
+
+    public employee:Employee|null = null;
 
   constructor(private pokeService: PokeService) { }
 
@@ -28,6 +31,19 @@ export class PokedexComponent implements OnInit {
               console.log("It got away!");
               console.log(error);
           }
-        )
-    }
+      )
+  }
+
+  showEmployee(){
+    this.pokeService.getEmployeeFromSpring(this.input).subscribe(
+        (data: Employee)=>{
+            data = new Employee(data.id, data.name, data.salary);
+            this.employee=data;
+            console.log(data);
+        },(error)=>{
+            this.employee=null;
+            console.log(error);
+        }
+    )
+  }
 }
