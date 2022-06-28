@@ -1,0 +1,27 @@
+<div class="container-fluid">
+  <div class="row">
+    <label class="col-sm-4" for="pokeInput">Pokemon ID #</label>
+    <input class="col-sm-4" id="pokeInput" name="pokeInput" type="number" [(ngModel)]="input">
+    <button class="btn btn-primary col-sm-4" (click)="getPoke()">Catch a Pokemon!</button>
+  </div>
+  <table class="table" *ngIf="pokemon">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Type</th>
+        <th scope="col">Sprite</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{pokemon?.name}}</td>
+        <td>{{pokemon.types[0]?.type.name}}
+          <span *ngIf="pokemon.types.length>1">, {{pokemon.types[1]?.type.name}}</span>
+        </td>
+        <td>
+          <img [src]="pokemon.sprites.front_default">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
